@@ -1,0 +1,124 @@
+Note that not all of these will actually be done before version 1.0.0 is released.
+* = Requires whole-page validation
+
+- [ ] Hover Info
+  - [x] DEFAULT
+  - [x] OPTIONAL
+  - [x] EXPLICIT
+  - [x] IMPLICIT
+  - [x] TRUE
+  - [x] FALSE
+  - [x] TAGS
+  - [ ] ~~Display dates in a more human friendly format~~ (This cannot be done _well_ until VS Code supports named regex capture groups.)
+  - [x] Support aliases
+    - [x] ISO646String
+    - [x] EmbeddedPDV
+    - [x] External
+    - [x] TeletexString
+- [x] Hints
+  - [x] Consider using GeneralizedTime instead of UTCTime
+  - [ ] EXTENSIBILITY IMPLIED, so trailing ... is not necessary*
+  - [ ] Consider adding an exception marker
+  - [ ] Consider shortening this OBJECT IDENTIFIER line by joining OBJECT IDENTIFIERs
+- [x] Warnings
+  - [x] (MIN..MAX) unnecessary
+  - [x] GeneralString use is discouraged (Page 182 Dubuisson)
+  - [x] GraphicString use is discouraged (Page 182 Dubuisson)
+  - [x] INTEGER is too big to encode in 32 bits
+- [ ] Errors
+  - [ ] Module*
+    - [ ] BEGIN with no END*
+    - [ ] END with no BEGIN*
+  - [x] Tag
+    - [x] Contradictory APPLICATION and PRIVATE
+    - [x] Contradictory UNIVERSAL and APPLICATION
+    - [x] Contradictory UNIVERSAL and PRIVATE
+    - [x] Cannot have negative tag number
+    - [x] No leading 0 on tag number
+    - [x] Contradictory EXPLICIT and IMPLICIT
+  - [x] Structured Types
+    - [x] Contradictory OPTIONAL and PRESENT
+    - [x] Contradictory OPTIONAL and ABSENT
+    - [x] Contradictory PRESENT and ABSENT
+    - [x] Contradictory OPTIONAL and DEFAULT
+    - [x] Duplicated context-specific tag numbers
+  - [ ] Types
+    - [ ] INTEGER
+      - [ ] Named values
+    - [x] OBJECT IDENTIFIER
+      - [x] Leading OID node greater than 2
+      - [x] Second OID node greater than 175
+      - [x] OID node cannot be negative
+      - [x] OID mismatch between node descriptor and node number (e.g. iso(2))
+    - [x] Invalid UTCTime
+    - [x] Invalid GeneralizedTime
+    - [x] Invalid character in string type
+      - [x] NumericString
+      - [x] PrintableString
+      - [x] VisibleString
+    - [x] Invalid character in binary string
+    - [x] Invalid character in hexadecimal string
+    - [x] ENUMERATED 
+      - [ ] Duplicated numbers in ENUMERATED (e.g. { on(0), off(1), out-of-order(2), idle(1) })
+    - [x] REAL
+    - [x] BOOLEAN
+    - [x] BIT STRING
+      - [ ] BIT STRING can be an hstring too.
+      - [ ] BIT STRING can also be a list of named identifiers, which indicates which bits are set.
+      - [ ] BIT STRING subtypes can specify bit numbers in parentheses next to the identifiers.
+    - [x] OCTET STRING
+      - [ ] OCTET STRING can be a bstring too.
+    - [x] RELATIVE-OID
+  - [ ] Constraints
+    - [x] Cannot have negative SIZE
+    - [x] No leading 0 on SIZE constraint
+    - [ ] Make sure SIZE is only applied to types that support it
+    - [x] Range boundaries: minimum greater than maximum in SIZE
+    - [x] Range boundaries: minimum greater than maximum
+    - [x] Leading or Trailing "|" Alternation Operator in FROM
+    - [x] FROM range cannot span multi-character strings
+    - [ ] PATTERN validation
+      - [ ] Unbalanced set `[]` brackets
+      - [ ] Unbalanced option `{}` brackets
+      - [ ] Unrecognized backslash escape
+      - [ ] Trailing alternation pipe
+      - [ ] Unbalanced grouping `()` brackets
+      - [ ] Nothing to repeat
+      - [ ] Invalid range
+  - [ ] Extensions
+    - [ ] Negative version number
+  - [ ] Undefined type
+  - [ ] Field cannot have two different types "e.g. OBJECT IDENTIFIER REAL"
+  - [ ] Unmatched Brackets
+  - [x] Trailing Comma
+  - [x] Leading zeros in numeric literal (X.680 S 12.8)
+- [x] Formatting
+  - [x] One single space between moustaches and content
+  - [x] Single spaces surrounding "::="
+  - [x] One blank line between definitions
+  - [x] Single space between SIZE and parentheses
+  - [ ] ENUMERATED members indented on separate newlines
+  - [ ] Named BIT STRING members indented on separate newlines
+  - [ ] Named INTEGER members indented on separate newlines
+  - [ ] Structured REAL all on the same line
+  - [ ] BOOLEAN all on one line
+  - [ ] OBJECT IDENTIFIER and RELATIVE-OID all on the same line
+  - [ ] Support multi-line keyword duplication checking
+- [x] Go to definitions
+- [ ] Solution explorer (I believe this is contingent upon symbol lookup working)
+- [ ] Common type definitions
+- [ ] Commands
+  - [ ] Append extensibility
+  - [ ] Make all tags context specific
+  - [ ] Show BER Encoding
+  - [ ] Show DER Encoding
+- [ ] Code completion
+- [ ] Possible actions on errors or warnings
+- [ ] Try to make diagnostics span lines (Look into document.positionAt)
+- [ ] Rename Symbol
+- [ ] Code Lens?
+- [ ] Note that X.409 (1984) was the first specification of ASN.1, which later became X.208 and X.209. X.208 later was replaced by X.680-X.683.
+- [ ] X.209 was the specification for BER, which later became X.690.
+- [ ] Create enum for tagging mode
+- [ ] Create the newer data types
+- [ ] Fix nodes[2] in asn1-ts/source/types/oid:14

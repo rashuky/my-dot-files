@@ -1,0 +1,104 @@
+{
+	"name": "asn1",
+	"displayName": "ASN.1",
+	"description": "ASN.1 syntax, snippets, formatting, and more.",
+	"version": "0.5.3",
+	"publisher": "wildboar",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.26.0"
+	},
+	"categories": [
+		"Formatters",
+		"Programming Languages",
+		"Snippets"
+	],
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "ASN.1 Configuration",
+			"properties": {
+				"asn1.ignoreIntegerSize": {
+					"type": "boolean",
+					"default": false,
+					"description": "Whether or not to ignore the warning when using INTEGER literals that exceed the 32-bit signed extrema."
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "asn1",
+				"aliases": [
+					"ASN.1",
+					"asn1"
+				],
+				"extensions": [
+					".asn1",
+					".asn"
+				],
+				"configuration": "./config/asn1.language-config.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "asn1",
+				"scopeName": "source.asn1",
+				"path": "./config/asn1.tmLanguage.json"
+			},
+			{
+				"scopeName": "markdown.asn1.codeblock",
+				"path": "./config/asn1.codeblock.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.asn": "asn1"
+				}
+			}
+		],
+		"snippets": [
+			{
+				"language": "asn1",
+				"path": "./config/asn1.code-snippets"
+			}
+		]
+	},
+	"main": "./dist/index.js",
+	"activationEvents": [
+		"onLanguage:asn1"
+	],
+	"dependencies": {
+		"event-stream": "^3.3.5"
+	},
+	"scripts": {
+		"pkgvars": "node ./node_modules/vscode/bin/install",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JonathanWilbur/vscode-asn1.git"
+	},
+	"keywords": [
+		"ASN",
+		"ASN.1",
+		"BER",
+		"DER",
+		"X.680"
+	],
+	"icon": "images/Icon512.png",
+	"homepage": "https://github.com/JonathanWilbur/vscode-asn1/README.md",
+	"devDependencies": {
+		"vscode": "^1.1.34"
+	},
+	"__metadata": {
+		"id": "e12f2451-47b5-4621-b397-6177867021c1",
+		"publisherId": "9cd33ab9-a758-444e-b3c0-c34fc90f72f4",
+		"publisherDisplayName": "Jonathan M. Wilbur",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1671554251967,
+		"preRelease": false
+	}
+}
