@@ -1,12 +1,14 @@
 define asd
 monitor reset halt
-set $pc = &ResetHandler
+load
+set $pc = &Reset_Handler
 set $sp = &_estack
 end
 
 define qwe
 monitor reset
-set $pc = &ResetHandler
+load
+set $pc = &Reset_Handler
 set $sp = &_estack
 end
 python
